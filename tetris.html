@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tetris</title>
+    <style>
+        /* Global body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Fullscreen Button Styling */
+        .fullscreen-btn {
+            padding: 12px 24px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        .fullscreen-btn:focus {
+            outline: none;
+        }
+
+        /* Game Container Styling */
+        .game-container {
+            position: relative;
+            width: 620px;
+            height: 480px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+            background: #ecf0f1;
+            margin-bottom: 30px; /* Space between game and home button */
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            padding: 15px 30px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: #2ecc71;
+            transform: scale(1.1);
+        }
+
+        .home-btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tetris</h1>
+    
+    <!-- Fullscreen Button -->
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">Go Fullscreen</button>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <script src="https://xxsibxx.github.io/ruffleembedsetup112/ruffle/ruffle.js"></script>
+        <div class="swf" dir="ltr" style="text-align: left;" trbidi="on">
+            <embed height="480" pluginspage="http://www.macromedia.com/go/getflashplayer" 
+                   src="https://slitherdmon.github.io/mygames/tetris.swf" 
+                   type="application/x-shockwave-flash" width="620" id="game"></embed>
+        </div>
+    </div>
+
+    <!-- Home Button -->
+    <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+    <script>
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            const gameContainer = document.querySelector('.game-container');
+
+            if (!document.fullscreenElement) {
+                // Enter fullscreen mode
+                if (gameContainer.requestFullscreen) {
+                    gameContainer.requestFullscreen();
+                } else if (gameContainer.mozRequestFullScreen) { // Firefox
+                    gameContainer.mozRequestFullScreen();
+                } else if (gameContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                    gameContainer.webkitRequestFullscreen();
+                } else if (gameContainer.msRequestFullscreen) { // IE/Edge
+                    gameContainer.msRequestFullscreen();
+                }
+                // Apply fullscreen styling to the game container
+                gameContainer.classList.add('fullscreen');
+            } else {
+                // Exit fullscreen mode
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+                // Remove fullscreen styling
+                gameContainer.classList.remove('fullscreen');
+            }
+        }
+    </script>
+</body>
+</html>
