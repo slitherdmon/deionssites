@@ -14,7 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: auto; /* Allow scrolling */
+            overflow: auto;
             color: white;
             text-align: center;
             flex-direction: column;
@@ -30,7 +30,7 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            position: fixed; /* Fixed position so it stays in place while scrolling */
+            position: fixed; 
             top: 20px;
             right: 20px;
             z-index: 1000;
@@ -46,16 +46,15 @@
             outline: none;
         }
 
-        /* Chatroom Container Styling */
-        .chatroom-container {
-            position: relative;
-            width: 750px;  /* Set to 750px */
-            height: 500px; /* Set to 500px */
+        /* Chat Container Styling */
+        .chat-container {
+            width: 450px;
+            height: 400px;
+            margin-top: 20px;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
             background: #ecf0f1;
-            margin-bottom: 20px; /* Space between chat and home button */
         }
 
         /* Home Button Styling */
@@ -95,9 +94,10 @@
     <!-- Fullscreen Button -->
     <button class="fullscreen-btn" onclick="toggleFullscreen()">Go Fullscreen</button>
 
-    <!-- Chatroom Container -->
-    <div class="chatroom-container">
-        <embed class="chat-iframe" id="chatroom-area" src="https://rumbletalk.com/client/?X~cUbK3x" width="100%" height="100%" scrolling="no" frameborder="0" allowfullscreen=""></embed>
+    <!-- Chat Container -->
+    <div class="chat-container">
+        <div id="rt-903050fd3617e34077eb28f89d0c6299"></div>
+        <script src="https://rumbletalk.com/client/?X~cUbK3x"></script>
     </div>
 
     <!-- Home Button -->
@@ -106,24 +106,24 @@
     <script>
         // Function to toggle fullscreen
         function toggleFullscreen() {
-            const chatroomArea = document.getElementById('chatroom-area');
+            const chatContainer = document.querySelector('.chat-container');
 
             if (!document.fullscreenElement) {
-                if (chatroomArea.requestFullscreen) {
-                    chatroomArea.requestFullscreen();
-                } else if (chatroomArea.mozRequestFullScreen) { // Firefox
-                    chatroomArea.mozRequestFullScreen();
-                } else if (chatroomArea.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                    chatroomArea.webkitRequestFullscreen();
-                } else if (chatroomArea.msRequestFullscreen) { // IE/Edge
-                    chatroomArea.msRequestFullscreen();
+                if (chatContainer.requestFullscreen) {
+                    chatContainer.requestFullscreen();
+                } else if (chatContainer.mozRequestFullScreen) { // Firefox
+                    chatContainer.mozRequestFullScreen();
+                } else if (chatContainer.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                    chatContainer.webkitRequestFullscreen();
+                } else if (chatContainer.msRequestFullscreen) { // IE/Edge
+                    chatContainer.msRequestFullscreen();
                 }
             } else {
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.mozCancelFullScreen) { // Firefox
                     document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari, Opera
                     document.webkitExitFullscreen();
                 } else if (document.msExitFullscreen) { // IE/Edge
                     document.msExitFullscreen();
@@ -131,8 +131,5 @@
             }
         }
     </script>
-
-    <!-- RumbleTalk Chatroom Integration Script -->
-    <script src="https://rumbletalk.com/client/?X~cUbK3x"></script>
 </body>
 </html>
