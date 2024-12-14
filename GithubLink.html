@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Link</title>
     <style>
-        /* Global body styles */
+        /* Global body styling */
         body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #2c3e50, #bdc3c7);
@@ -14,15 +14,23 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: auto; /* Allow scrolling */
+            overflow: hidden;
             color: white;
             text-align: center;
             flex-direction: column;
         }
 
-        /* Fullscreen Button Styling */
-        .fullscreen-btn {
-            padding: 12px 24px;
+        /* Title Styling */
+        h1 {
+            font-size: 40px;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Button Styling */
+        button {
+            padding: 15px 30px;
             background-color: #2980b9;
             color: white;
             border: none;
@@ -30,32 +38,18 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            position: fixed; /* Fixed position so it stays in place while scrolling */
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
+            margin: 10px;
             transition: background-color 0.3s, transform 0.3s;
+            width: 250px;
         }
 
-        .fullscreen-btn:hover {
+        button:hover {
             background-color: #3498db;
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
-        .fullscreen-btn:focus {
+        button:focus {
             outline: none;
-        }
-
-        /* Styling for the Game Embed */
-        .game-container {
-            position: relative;
-            width: 450px;  /* Set to 450px */
-            height: 1000px; /* Set to 1000px */
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-            background: #ecf0f1;
-            margin-bottom: 20px; /* Space between game and home button */
         }
 
         /* Home Button Styling */
@@ -68,7 +62,9 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 20px;
             transition: background-color 0.3s, transform 0.3s;
+            width: 250px;
         }
 
         .home-btn:hover {
@@ -79,56 +75,21 @@
         .home-btn:focus {
             outline: none;
         }
-
-        /* Title Styling */
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #ecf0f1;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
     </style>
 </head>
 <body>
-    <h1>Github Link</h1>
+    <h1>Click To See!</h1>
     
-    <!-- Fullscreen Button -->
-    <button class="fullscreen-btn" onclick="toggleFullscreen()">Go Fullscreen</button>
-
-    <!-- Game Container -->
-    <div class="game-container">
-        <embed class="game-iframe" id="game-area" src="https://github.com/slitherdmon/deionssites"width="100%" height="100%" scrolling="no" frameborder="0" allowfullscreen=""></embed>
-    </div>
+    <!-- Button to open Roblox -->
+    <button onclick="openGit()">Github Link</button>
 
     <!-- Home Button -->
     <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
 
     <script>
-        // Function to toggle fullscreen
-        function toggleFullscreen() {
-            const gameArea = document.getElementById('game-area');
-
-            if (!document.fullscreenElement) {
-                if (gameArea.requestFullscreen) {
-                    gameArea.requestFullscreen();
-                } else if (gameArea.mozRequestFullScreen) { // Firefox
-                    gameArea.mozRequestFullScreen();
-                } else if (gameArea.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                    gameArea.webkitRequestFullscreen();
-                } else if (gameArea.msRequestFullscreen) { // IE/Edge
-                    gameArea.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { // Firefox
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE/Edge
-                    document.msExitFullscreen();
-                }
-            }
+        function openGit() {
+            var win = window.open('https://github.com/slitherdmon/deionssites'); // Open Roblox in a new tab
+            win.focus();
         }
     </script>
 </body>
