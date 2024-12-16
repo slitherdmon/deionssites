@@ -134,21 +134,18 @@
         <button onclick="window.location.href='2048.html'">2048</button>
         <button onclick="window.location.href='bitlife.html'">BitLife</button>
         <button onclick="window.location.href='blockblast.html'">Block Blast</button>
-        <button onclick="window.location.href='chatroom.html'">Chatroom</button>
-        <button onclick="window.location.href='CoinDash.html'">Coin Dash</button>
+        <button onclick="openCookie()">Cookie Clicker</button>
         <button onclick="window.location.href='dino.html'">Dino</button>
         <button onclick="window.location.href='flappybird.html'">Flappy Bird</button>
         <button onclick="window.location.href='geodash.html'">Geometry Dash Lite</button>
-        <button onclick="window.location.href='GithubLink.html'">Github Link</button>
         <button onclick="window.location.href='interstellar.html'">Interstellar (PRXY)</button>
         <button onclick="window.location.href='jetpack.html'">Jetpack Joyride</button>
         <button onclick="window.location.href='minecraft.html'">Minecraft</button>
         <button onclick="window.location.href='moonlight.html'">Moonlight (PRXY)</button>
-        <button onclick="window.location.href='OD1.html'">Opposite Day</button>
-        <button onclick="window.location.href='OD2.html'">Opposite Day 2</button>
         <button onclick="window.location.href='pacman.html'">Pac-Man</button>
         <button onclick="window.location.href='papa/pizzeria.html'">Papa's Pizzeria</button>
         <button onclick="window.location.href='retro-bowl.html'">Retro Bowl</button>
+        <button onclick="window.location.href='retro/index.html'">Retro Bowl 2</button>
         <button onclick="window.location.href='roblox.html'">Roblox</button>
         <button onclick="window.location.href='run-3.html'">Run 3</button>
         <button onclick="window.location.href='slope.html'">Slope</button>
@@ -158,8 +155,8 @@
     <!-- Main Content -->
     <div class="main-content" id="main-content">
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
-        <h1>Deion's Sites</h1>
-        <p>WELCOME TO THE SITE! Games will be added, and if it's down, don't worry because I'm probably working on it.</p>
+        <h1>Deion's Sites 2.0</h1>
+        <p>WELCOME TO THE NEW SITE! Games will be added, and if it's down, don't worry because I'm probably working on it.</p>
     </div>
 
     <script>
@@ -168,6 +165,9 @@
             const mainContent = document.getElementById('main-content');
             sidebar.classList.toggle('open');
             mainContent.classList.toggle('open');
+        }
+        function openCookie() {
+            var win = window.open('SITE_URL/cookie/index.html')
         }
     </script>
 </body>
