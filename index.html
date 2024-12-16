@@ -141,10 +141,11 @@
         <button onclick="window.location.href='interstellar.html'">Interstellar (PRXY)</button>
         <button onclick="window.location.href='jetpack.html'">Jetpack Joyride</button>
         <button onclick="window.location.href='minecraft.html'">Minecraft</button>
+        <button onclick="window.location.href='moonlight.html'">Moonlight (PRXY)</button>
         <button onclick="window.location.href='pacman.html'">Pac-Man</button>
         <button onclick="window.location.href='papa/pizzeria.html'">Papa's Pizzeria</button>
         <button onclick="window.location.href='retro-bowl.html'">Retro Bowl</button>
-        <button onclick="window.location.href='retro/index.html'">Retro Bowl 2</button>
+        <button onclick="openRetro()">Retro Bowl 2</button>
         <button onclick="window.location.href='roblox.html'">Roblox</button>
         <button onclick="window.location.href='run-3.html'">Run 3</button>
         <button onclick="window.location.href='slope.html'">Slope</button>
@@ -166,7 +167,10 @@
             mainContent.classList.toggle('open');
         }
         function openCookie() {
-            var win = window.open('http://deion.satrixx.dns.army/cookie/index.html')
+            var win = window.open('SITE_URL/cookie/index.html')
+        }
+        function openRetro() {
+            var win = window.open('URL/retro/index.html') //<< make sure there's only one slash not two
         }
     </script>
 </body>
