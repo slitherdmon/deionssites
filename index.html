@@ -137,6 +137,25 @@
             background-color: #2980b9;
         }
 
+        /* A:B Cloak Button Style */
+        .cloak-btn {
+            padding: 15px 25px;
+            font-size: 1.25rem;
+            color: #fff;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 50px; /* Rounded corners */
+            margin-bottom: 20px; /* Space between the button and title */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cloak-btn:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
         /* When Sidebar is Open */
         .sidebar.open + .container .toggle-btn {
             left: auto;
@@ -150,6 +169,11 @@
             }
             p {
                 font-size: 1rem;
+            }
+
+            .cloak-btn {
+                font-size: 1rem;
+                padding: 12px 20px;
             }
         }
     </style>
@@ -181,12 +205,12 @@
         <button onclick="window.location.href='run-3.html'">Run 3</button>
         <button onclick="window.location.href='slope.html'">Slope</button>
         <button onclick="window.location.href='tetris.html'">Tetris</button>
-        <!-- New Button: A:B Cloak -->
-        <button onclick="openSite()">A:B Cloak</button>
     </div>
 
     <!-- Main Content -->
     <div class="container">
+        <!-- A:B Cloak Button Above the h1 -->
+        <button class="cloak-btn" onclick="openSite()">A:B Cloak</button>
         <button class="toggle-btn" onclick="toggleSidebar()">&#9776;</button>
         <h1>Skibidi Sites</h1>
         <p>Skibidi Sites lol</p>
@@ -214,7 +238,7 @@
 
         // Function for A:B Cloak Button
         function openSite() {
-            var win = window.open('');
+            var win = window.open(); // Replace with the URL you want to open
             win.document.body.style.margin='0';
             win.document.body.style.height='100vh'
             var url = 'https://sites.deions.net'
