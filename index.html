@@ -181,6 +181,8 @@
         <button onclick="window.location.href='run-3.html'">Run 3</button>
         <button onclick="window.location.href='slope.html'">Slope</button>
         <button onclick="window.location.href='tetris.html'">Tetris</button>
+        <!-- New Button: A:B Cloak -->
+        <button onclick="openSite()">A:B Cloak</button>
     </div>
 
     <!-- Main Content -->
@@ -205,8 +207,23 @@
         function openRetro() {
             var win = window.open('https://sites.deions.net/retro/index.html');
         }
+        
         function openSnake() {
-            var win = window.open('https://sites.deions.net/gsnake/index.html')
+            var win = window.open('https://sites.deions.net/gsnake/index.html');
+        }
+
+        // Function for A:B Cloak Button
+        function openSite() {
+            var win = window.open('');
+            win.document.body.style.margin='0';
+            win.document.body.style.height='100vh'
+            var url = 'https://sites.deions.net'
+            var iframe = win.document.createElement('iframe')
+            iframe.style.width = '100%';
+            iframe.style.height = '100%';
+            iframe.style.border = 'none';
+            iframe.src = url
+            win.document.body.appendChild(iframe)
         }
     </script>
 </body>
