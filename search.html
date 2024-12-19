@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search to Open Iframe</title>
+    <style>
+        /* Global body styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Search bar styling */
+        input[type="text"] {
+            padding: 12px 20px;
+            font-size: 18px;
+            width: 300px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 15px rgba(41, 128, 185, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Button styling */
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            background-color: #2980b9;
+            color: white;
+        }
+
+        button:hover {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Iframe styling */
+        iframe {
+            width: 100%;
+            height: 100vh;
+            border: none;
+            display: none; /* Initially hidden */
+        }
+
+        /* "Must include https://URL" text styling */
+        .instruction-text {
+            font-size: 14px;
+            color: #bdc3c7;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Search and Open Iframe</h1>
+
+    <!-- Search Bar -->
+    <input type="text" id="searchBar" placeholder="Enter your search query..." onkeydown="handleKeyPress(event)" />
+    
+    <!-- Search Button -->
+    <button onclick="openIframe()">Search</button>
+
+    <!-- Instruction Text -->
+    <div class="instruction-text">
+        Must include <strong>https://</strong> in the URL
+    </div>
+
+    <!-- Iframe for displaying the result -->
+    <iframe id="iframe"></iframe>
+
+    <script>
+        // Function to handle the Enter key press
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                openIframe();
+            }
+        }
+
+        // Function to open the iframe with the search query
+        function openIframe() {
+            var query = document.getElementById("searchBar").value;
+            if (query) {
+                // Construct the URL with the query
+                var url = "https://szvy.indianawx.us/embed.html#" + encodeURIComponent(query);
+                
+                // Update the iframe source and display it
+                var iframe = document.getElementById("iframe");
+                iframe.src = url;
+                
+                // Hide the search bar and button
+                document.querySelector('h1').style.display = 'none';
+                document.querySelector('input').style.display = 'none';
+                document.querySelector('button').style.display = 'none';
+                document.querySelector('.instruction-text').style.display = 'none'; // Hide the instruction text as well
+                
+                // Show the iframe and make it take up the entire screen
+                iframe.style.display = 'block';
+            } else {
+                alert("Please enter a search query.");
+            }
+        }
+    </script>
+
+</body>
+</html>
