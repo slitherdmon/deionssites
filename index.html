@@ -24,17 +24,23 @@
             transition: background 0.5s ease, transform 0.3s ease;
         }
 
-        /* Full-screen Background */
-        .background {
-            position: absolute;
+        /* Full-screen Black Overlay */
+        .overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ecf0f1; /* Even lighter gray background */
-            z-index: -1;
-            filter: blur(15px);
-            transition: filter 0.3s ease;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: bold;
+            z-index: 1000;
+            backdrop-filter: blur(10px); /* Blurred effect */
+            cursor: pointer;
         }
 
         /* Main Content */
@@ -45,6 +51,7 @@
             align-items: center;
             text-align: center;
             z-index: 1;
+            display: none; /* Hidden initially */
         }
 
         /* Site Title with Elegant Shadow */
@@ -75,40 +82,40 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100vh; /* Ensuring sidebar takes full screen height */
-            background-color: #34495e; /* Darker gray for sidebar */
+            height: 100vh;
+            background-color: #34495e;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Adjust columns to automatically fit */
-            grid-gap: 10px; /* Reduced gap between buttons */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-gap: 10px;
             justify-items: center;
             align-items: start;
             padding: 20px;
-            z-index: 10; /* Ensure it's below the toggle button */
-            overflow-y: auto; /* Enable vertical scroll */
-            transform: translateY(-100%); /* Initially hidden */
+            z-index: 10;
+            overflow-y: auto;
+            transform: translateY(-100%);
             transition: transform 0.5s ease;
         }
 
         .sidebar.open {
-            transform: translateY(0); /* Show the sidebar */
+            transform: translateY(0);
         }
 
         /* Sidebar Buttons */
         .sidebar button {
-            padding: 12px 20px; /* Button padding */
+            padding: 12px 20px;
             font-size: 18px;
             color: #fff;
-            background-color: #7f8c8d; /* Gray button */
+            background-color: #7f8c8d;
             border: none;
             border-radius: 50px;
-            margin: 5px; /* Reduced margin */
+            margin: 5px;
             cursor: pointer;
             transition: all 0.3s ease, transform 0.3s ease;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         .sidebar button:hover {
-            background-color: #95a5a6; /* Lighter gray on hover */
+            background-color: #95a5a6;
             transform: scale(1.1);
         }
 
@@ -120,11 +127,11 @@
             padding: 15px;
             font-size: 25px;
             color: #fff;
-            background-color: transparent; /* Transparent background */
+            background-color: transparent;
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            z-index: 20; /* Ensure toggle button is above sidebar */
+            z-index: 20;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -134,16 +141,15 @@
         }
 
         .toggle-btn:hover {
-            background-color: rgba(0, 0, 0, 0.3); /* Slight darkening effect */
+            background-color: rgba(0, 0, 0, 0.3);
             transform: scale(1.1);
         }
 
-        /* Hamburger Menu (Three Lines) */
         .toggle-btn .bar {
             display: block;
             width: 30px;
             height: 3px;
-            background-color: #000; /* Black lines */
+            background-color: #000;
             margin: 5px auto;
             transition: all 0.3s ease;
         }
@@ -153,7 +159,7 @@
             padding: 15px 25px;
             font-size: 1.25rem;
             color: #fff;
-            background-color: #7f8c8d; /* Gray button */
+            background-color: #7f8c8d;
             border: none;
             border-radius: 50px;
             margin-bottom: 20px;
@@ -167,18 +173,6 @@
             transform: scale(1.1);
         }
 
-        /* Adjusting grid layout to make sure no buttons are cut off */
-        .sidebar {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            grid-gap: 10px;
-            padding: 20px;
-            overflow-y: scroll; /* Allow scrolling */
-            max-height: 100vh; /* Ensure sidebar takes full screen */
-            margin: 0;
-        }
-
-        /* Responsiveness */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -195,83 +189,66 @@
                 padding: 12px 20px;
             }
             .sidebar {
-                grid-template-columns: repeat(2, 1fr); /* For smaller screens, make it 2 columns */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="autorelaxed"
-     data-ad-client="ca-pub-3146020351464497"
-     data-ad-slot="3414349052"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-
-    <!-- Background Image -->
-    <div class="background"></div>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <button onclick="window.location.href='1v1lol.html'">1v1.LOL</button>
-        <button onclick="window.location.href='8ball.html'">8 Ball Pool</button>
-        <button onclick="window.location.href='2048.html'">2048</button>
-        <button onclick="window.location.href='bbalstars/'">Basketball Stars</button>
-        <button onclick="window.location.href='bitlife.html'">BitLife</button>
-        <button onclick="window.location.href='blackj.html'">Blackjack</button>
-        <button onclick="window.location.href='blockblast.html'">Block Blast</button>
-        <button onclick="window.location.href='chatgpt.html'">ChatGPT</button>
-        <button onclick="window.location.href='chatroom.html'">Chatroom</button>
-        <button onclick="window.location.href='cookieclicker/'">Cookie Clicker</button>
-        <button onclick="window.location.href='dino.html'">Dino</button>
-        <button onclick="window.location.href='discordd.com'">Discord</button>
-        <button onclick="window.location.href='flappybird.html'">Flappy Bird</button>
-        <button onclick="window.location.href='geforce.html'">GeForce Now</button>
-        <button onclick="window.location.href='geodash.html'">Geometry Dash Lite</button>
-        <button onclick="window.location.href='geodash_meltdown.html'">Geometry Dash Meltdown</button>
-        <button onclick="window.location.href='geodash_subzero.html'">Geometry Dash Subzero</button>
-        <button onclick="window.location.href='gsnake/'">Google Snake</button>
-        <button onclick="window.location.href='idlebreakout.html'">Idle Breakout</button>
-        <button onclick="window.location.href='interstellar.html'">Interstellar (PRXY)</button>
-        <button onclick="window.location.href='jetpack.html'">Jetpack Joyride</button>
-        <button onclick="window.location.href='minecraft.html'">Minecraft</button>
-        <button onclick="window.location.href='mcclassic/index.html'">Minecraft Classic</button>
-        <button onclick="window.location.href='moonlight.html'">Moonlight (PRXY)</button>
-        <button onclick="window.location.href='OD1.html'">Opposite Day</button>
-        <button onclick="window.location.href='OD2.html'">Opposite Day 2</button>
-        <button onclick="window.location.href='OVO.html'">OvO</button>
-        <button onclick="window.location.href='pacman.html'">Pac-Man</button>
-        <button onclick="window.location.href='papa/pizzeria.html'">Papa's Pizzeria</button>
-        <button onclick="window.location.href='retro-bowl.html'">Retro Bowl</button>
-        <button onclick="window.location.href='retro/index.html'">Retro Bowl 2</button>
-        <button onclick="window.location.href='roblox.html'">Roblox</button>
-        <button onclick="window.location.href='run-3.html'">Run 3</button>
-        <button onclick="window.location.href='slope.html'">Slope</button>
-        <button onclick="window.location.href='solitaire.html'">Solitaire</button>
-        <button onclick="window.location.href='tetris.html'">Tetris</button>
-        <button onclick="window.location.href='youtube.html'">YouTube</button>
+    <!-- Overlay with "Click to Enter" message -->
+    <div class="overlay" onclick="enterSite()">
+        Click to Enter
     </div>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-     crossorigin="anonymous"></script>
-<!-- sighh -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-3146020351464497"
-     data-ad-slot="9436562421"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     <!-- Main Content -->
     <div class="container">
-        <button class="cloak-btn" onclick="openSite()">A:B Cloak</button>
         <h1>Skibidi Sites</h1>
-        <p>Welcome to Skibidi Sites. I added YouTube!!</p>
+        <p>Welcome to Skibidi Sites! Explore all the games below:</p>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <button onclick="window.location.href='1v1lol.html'">1v1.LOL</button>
+            <button onclick="window.location.href='8ball.html'">8 Ball Pool</button>
+            <button onclick="window.location.href='2048.html'">2048</button>
+            <button onclick="window.location.href='bbalstars/'">Basketball Stars</button>
+            <button onclick="window.location.href='bitlife.html'">BitLife</button>
+            <button onclick="window.location.href='blackj.html'">Blackjack</button>
+            <button onclick="window.location.href='blockblast.html'">Block Blast</button>
+            <button onclick="window.location.href='chatgpt.html'">ChatGPT</button>
+            <button onclick="window.location.href='chatroom.html'">Chatroom</button>
+            <button onclick="window.location.href='cookieclicker/'">Cookie Clicker</button>
+            <button onclick="window.location.href='dino.html'">Dino</button>
+            <button onclick="window.location.href='discordd.com'">Discord</button>
+            <button onclick="window.location.href='flappybird.html'">Flappy Bird</button>
+            <button onclick="window.location.href='geforce.html'">GeForce Now</button>
+            <button onclick="window.location.href='geodash.html'">Geometry Dash Lite</button>
+            <button onclick="window.location.href='geodash_meltdown.html'">Geometry Dash Meltdown</button>
+            <button onclick="window.location.href='geodash_subzero.html'">Geometry Dash Subzero</button>
+            <button onclick="window.location.href='gsnake/'">Google Snake</button>
+            <button onclick="window.location.href='idlebreakout.html'">Idle Breakout</button>
+            <button onclick="window.location.href='interstellar.html'">Interstellar (PRXY)</button>
+            <button onclick="window.location.href='jetpack.html'">Jetpack Joyride</button>
+            <button onclick="window.location.href='minecraft.html'">Minecraft</button>
+            <button onclick="window.location.href='mcclassic/index.html'">Minecraft Classic</button>
+            <button onclick="window.location.href='moonlight.html'">Moonlight (PRXY)</button>
+            <button onclick="window.location.href='OD1.html'">Opposite Day</button>
+            <button onclick="window.location.href='OD2.html'">Opposite Day 2</button>
+            <button onclick="window.location.href='OVO.html'">OvO</button>
+            <button onclick="window.location.href='pacman.html'">Pac-Man</button>
+            <button onclick="window.location.href='papa/pizzeria.html'">Papa's Pizzeria</button>
+            <button onclick="window.location.href='retro-bowl.html'">Retro Bowl</button>
+            <button onclick="window.location.href='retro/index.html'">Retro Bowl 2</button>
+            <button onclick="window.location.href='roblox.html'">Roblox</button>
+            <button onclick="window.location.href='run-3.html'">Run 3</button>
+            <button onclick="window.location.href='slope.html'">Slope</button>
+            <button onclick="window.location.href='solitaire.html'">Solitaire</button>
+            <button onclick="window.location.href='tetris.html'">Tetris</button>
+            <button onclick="window.location.href='youtube.html'">YouTube</button>
+            <!-- Add more buttons for other games as needed -->
+        </div>
+
+        <button class="cloak-btn" onclick="openSite()">A:B Cloak</button>
     </div>
 
     <!-- Sidebar Toggle Button -->
@@ -281,27 +258,36 @@
         <span class="bar"></span>
     </button>
 
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-     crossorigin="anonymous"></script>
-<!-- sighh -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-3146020351464497"
-     data-ad-slot="9436562421"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+    <!-- Audio Player (hidden initially) -->
+    <audio id="audio" loop>
+        <source src="allmine.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('open');
         }
 
-        // Function for A:B Cloak Button
+        function enterSite() {
+            // Hide the overlay
+            document.querySelector('.overlay').style.display = 'none';
+
+            // Show the normal content
+            document.querySelector('.container').style.display = 'block';
+
+            // Play the audio
+            var audio = document.getElementById('audio');
+            audio.play().catch(function(error) {
+                console.log("Autoplay was blocked: ", error);
+            });
+        }
+
         function openSite() {
-            var win = window.open(); // Replace with the URL you want to open
-            win.document.body.style.margin='0';
-            win.document.body.style.height='100vh';
+            var win = window.open();
+            win.document.body.style.margin = '0';
+            win.document.body.style.height = '100vh';
             var url = 'https://deions.net';
             var iframe = win.document.createElement('iframe');
             iframe.style.width = '100%';
@@ -311,41 +297,5 @@
             win.document.body.appendChild(iframe);
         }
     </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-    crossorigin="anonymous"></script>
-<!-- DEIONS -->
-<ins class="adsbygoogle"
-    style="display:block"
-    data-ad-client="ca-pub-3146020351464497"
-    data-ad-slot="5473568009"
-    data-ad-format="auto"
-    data-full-width-responsive="true"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-     crossorigin="anonymous"></script>
-<!-- DEIONSS -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3146020351464497"
-     data-ad-slot="5119147114"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
-     crossorigin="anonymous"></script>
-<!-- First -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-3146020351464497"
-     data-ad-slot="2954080407"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
 </body>
 </html>
