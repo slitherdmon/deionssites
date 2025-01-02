@@ -144,8 +144,9 @@
             margin: 5px auto;
             transition: all 0.3s ease;
         }
-                /* Cloak Button Styling */
-                .cloak-btn {
+        
+        /* Cloak Button Styling */
+        .cloak-btn {
             padding: 15px 25px;
             font-size: 1.25rem;
             color: #fff;
@@ -242,6 +243,9 @@
         <span class="bar"></span>
     </button>
 
+    <!-- Audio Element -->
+    <audio id="enterAudio" src="thecup.mp3" preload="auto"></audio>
+
     <script>
         function toggleSidebar() {
             const sidebar = document.getElementById('sidebar');
@@ -251,6 +255,10 @@
         }
 
         function enterSite() {
+            // Play audio on click
+            document.getElementById('enterAudio').play();
+
+            // Hide the overlay and show the main content
             document.querySelector('.overlay').style.display = 'none';
             document.querySelector('.container').style.display = 'block';
         }
@@ -268,5 +276,18 @@
             win.document.body.appendChild(iframe);
         }
     </script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
+crossorigin="anonymous"></script>
+<!-- bhiljkjhbvghjfkwebf -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-3146020351464497"
+data-ad-slot="2865695897"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 </html>
