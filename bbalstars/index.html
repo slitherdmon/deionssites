@@ -1,87 +1,145 @@
 <!DOCTYPE html>
-<html lang="en" >
-
+<html lang="en">
 <head>
-    <meta charset="utf-8"  />
-    <meta http-equiv="x-ua-compatible"  content="ie=edge" >
-    <meta name="viewport"  content="initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"  />    
-    <link rel="stylesheet"  href="assets/css/app.css"  type="text/css"  />    
-    <title>
-        Basketball Stars
-    </title>
-    
-    <meta http-equiv="Content-Type"  content="text/html; charset=utf-8" > 
-</head>
-
-<body>
-    <div id="content" ></div>
-    <div id="orientation" ></div>
-    <div id="loader" >Loading ...</div>
-    <script type="text/javascript"  src="https://imasdk.googleapis.com/js/sdkloader/ima3.js" ></script>
-    <script type="text/javascript"  src="assets/box2dweb/nape.min.js" >
-        var nape ="nape.min.js" ;
-    </script>
-    <script type="text/javascript"  src="assets/box2dweb/nape-debug-draw.min.js" ></script>
-    <script type="text/javascript"  src="assets/box2dweb/jquery-3.1.1.min.js" ></script>
-    <script type="text/javascript"  src="assets/box2dweb/easeljs-0.8.2.combined.js" ></script>
-    <script type="text/javascript"  src="assets/box2dweb/bluebird.min.js" ></script>
-
-    
-
-    <script type="text/javascript" >
-    var useEvents = (typeof(Event) ==='function' );
-
-        var myDispatchEvent = function (name){
-            var event;
-            if (useEvents){
-                event =  new Event(name);
-            }else{
-                event = document.createEvent('Event');
-                event.initEvent(name, true, true);
-            }
-            document.getElementById("content").dispatchEvent(event);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basketball Stars</title>
+    <style>
+        /* Global body styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #bdc3c7);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: auto; /* Allow scrolling */
+            color: white;
+            text-align: center;
+            flex-direction: column;
         }
 
-        window["GD_OPTIONS"] = {
-                "gameId": "69d78d071f704fa183d75b4114ae40ec",
-                "onEvent": function(event) {
-                    switch (event.name) {
-                        case "SDK_GAME_START":
-                            // advertisement done, resume game logic and unmute audio
-                            myDispatchEvent('SDK_GAME_START');
-                            break;
-                        case "SDK_GAME_PAUSE":
-                            // pause game logic / mute audio
-                            myDispatchEvent('SDK_GAME_PAUSE');
-                            // document.getElementById("content").dispatchEvent(new Event("SDK_GAME_PAUSE"));
-                            break;
-                        case "SDK_GDPR_TRACKING":
-                            // this event is triggered when your user doesn't want to be tracked
-                            console.log("SDK_GDPR_TRACKING");
-                            break;
-                        case "SDK_GDPR_TARGETING":
-                            // this event is triggered when your user doesn't want personalised targeting of ads and such
-                            console.log("SDK_GDPR_TARGETING");
-                            break;
-                        case "SDK_READY":
-                            // this event is triggered when your user doesn't want personalised targeting of ads and such
-                            console.log("SDK_READY");
-                            // gdsdk.openConsole();
-                            break;
-                    }
-                },
-            };
-            (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) return;
-                js = d.createElement(s);
-                js.id = id;
-                js.src ='assets/main.min.js' ;
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'gamedistribution-jssdk'));
+        /* Fullscreen Button Styling */
+        .fullscreen-btn {
+            padding: 12px 24px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            position: fixed; /* Fixed position so it stays in place while scrolling */
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: #3498db;
+            transform: scale(1.1);
+        }
+
+        .fullscreen-btn:focus {
+            outline: none;
+        }
+
+        /* Styling for the Game Embed */
+        .game-container {
+            position: relative;
+            width: 450px;  /* Set to 450px */
+            height: 1000px; /* Set to 1000px */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            background: #ecf0f1;
+            margin-bottom: 20px; /* Space between game and home button */
+        }
+
+        /* Home Button Styling */
+        .home-btn {
+            padding: 15px 30px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .home-btn:hover {
+            background-color: #2ecc71;
+            transform: scale(1.1);
+        }
+
+        .home-btn:focus {
+            outline: none;
+        }
+
+        /* Title Styling */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Basketball Stars</h1>
+    
+    <!-- Fullscreen Button -->
+    <button class="fullscreen-btn" onclick="toggleFullscreen()">Go Fullscreen</button>
+
+    <!-- Game Container -->
+    <div class="game-container">
+        <embed class="game-iframe" id="game-area" src="https://deions.net/bbalstars/game.html" width="100%" height="100%" scrolling="no" frameborder="0" allowfullscreen=""></embed>
+    </div>
+
+    <!-- Home Button -->
+    <button class="home-btn" onclick="window.location.href='index.html'">Home</button>
+
+    <script>
+        // Function to toggle fullscreen
+        function toggleFullscreen() {
+            const gameArea = document.getElementById('game-area');
+
+            if (!document.fullscreenElement) {
+                if (gameArea.requestFullscreen) {
+                    gameArea.requestFullscreen();
+                } else if (gameArea.mozRequestFullScreen) { // Firefox
+                    gameArea.mozRequestFullScreen();
+                } else if (gameArea.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    gameArea.webkitRequestFullscreen();
+                } else if (gameArea.msRequestFullscreen) { // IE/Edge
+                    gameArea.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
     </script>
-
-   
-<script type="text/javascript"  src="assets/basketball_legends_2019.min.js" ></script></body>
-
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3146020351464497"
+    crossorigin="anonymous"></script>
+<!-- sighh -->
+<ins class="adsbygoogle"
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-3146020351464497"
+    data-ad-slot="9436562421"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</body>
 </html>
