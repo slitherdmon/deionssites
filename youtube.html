@@ -93,7 +93,7 @@
     <h1>Youtube</h1>
     <p>Its not fast and it might not work all the time but its literally the best i could do soooo</p>    
     <!-- Fullscreen Button -->
-    <button class="fullscreen-btn" onclick="toggleFullscreen()">Go Fullscreen</button>
+    <button class="fullscreen-btn" onclick="openWindow()">Go Fullscreen</button>
 
     <!-- Game Container -->
     <div class="game-container">
@@ -129,6 +129,9 @@
                     document.msExitFullscreen();
                 }
             }
+        }
+        function openWindow() {
+            var win = window.open('https://szvy.indianawx.us/embed.html#https://youtube.com/')
         }
     </script>
 </body>
