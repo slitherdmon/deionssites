@@ -8,8 +8,22 @@
         <h2>Error</h2>
         <div style="text-align: center; border: none">
             <input class='btn'onclick="window.location.href='../../../../../../../../../../../../../'" type="button" value="HOME">
+            <button class="btn" onclick="openPage()">Other Sites</button>
         </div>
     </body>
+    <script>
+        function openPage() {
+            var win = window.open()
+            win.document.body.style.margin='0';
+            var url = '/othersites.html'
+            var iframe = win.document.createElement('iframe')
+            iframe.style.height='100%';
+            iframe.style.width='100%';
+            iframe.style.border='none';
+            iframe.src = url
+            win.document.body.appendChild(iframe)
+        }
+    </script>
     <style>
         h1 {
             font-family: Arial, Helvetica, sans-serif;
@@ -30,6 +44,8 @@
         }
         .btn:hover {
             border-radius: 3px;
+            background-color: #F2F2F2;
+            cursor: pointer;
         }
     </style>
 </html>
